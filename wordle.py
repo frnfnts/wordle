@@ -6,6 +6,7 @@ def main():
     not_at = ["n", "o", "r", "tn", "t"]
     exact_at = ["", "", "", "", ""]
     p = itertools.permutations(letters, 5)
+    memo = set()
     for i in p:
         ng = False
         for at, ii in enumerate(i):
@@ -16,7 +17,9 @@ def main():
                 ng = True
                 break
         if not ng:
-            print("".join(i))
+            if i not in memo:
+                memo.add(i)
+                print("".join(i))
 
 
 if __name__ == "__main__":
