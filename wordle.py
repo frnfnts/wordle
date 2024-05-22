@@ -1,11 +1,20 @@
 import itertools
 
 
+ALL_LETTERS = list("abcdefghijklmnopqrstuvwxyz")
+
+
 def main():
     letters = ""
     not_at = ["", "", "", "", ""]
     exact_at = ["", "", "", "", ""]
+    not_use = ""
     may_use = ""
+
+    if not may_use:
+        may_use = ALL_LETTERS
+        for letter in not_use:
+            may_use.remove(letter)
 
     vague_count = letters.count("-")
     p = itertools.permutations(letters, 5)
