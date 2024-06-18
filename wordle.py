@@ -6,7 +6,7 @@ ALL_LETTERS = list("abcdefghijklmnopqrstuvwxyz")
 
 def main():
     not_at = ["", "", "", "", ""]
-    exact_at = ["", "", "", "", ""]
+    exact_at = "-----"
     use = ""
     not_use = ""
     may_use = ""
@@ -16,7 +16,7 @@ def main():
         for letter in not_use:
             may_use.remove(letter)
 
-    vague_count = 5 - sum([1 for x in exact_at if x])
+    vague_count = sum([1 for x in exact_at if x == "-"])
     memo = set()
     pp = itertools.product(may_use, repeat=vague_count)
     for may_use_letters in pp:
@@ -24,7 +24,7 @@ def main():
         if use and not any([x in use for x in may_use_letters]):
             continue
 
-        concrete_word = "".join(map(lambda x: x if x else "-", exact_at))
+        concrete_word = exact_at
         for letter in may_use_letters:
             concrete_word = concrete_word.replace("-", letter, 1)
 
