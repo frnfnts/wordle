@@ -21,7 +21,7 @@ def main():
     pp = itertools.product(may_use, repeat=vague_count)
     for may_use_letters in pp:
         # use が指定されている場合、その文字が含まれていないものはスキップ
-        if use and not any([x in use for x in may_use_letters]):
+        if use and not all([x in may_use_letters for x in use]):
             continue
 
         concrete_word = exact_at
